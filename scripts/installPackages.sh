@@ -8,3 +8,10 @@ yarn add immutable # must have
 
 yarn add react-native-iphone-x-helper # no other way to detect and handle iPhone X and newer specific behavior
 yarn add react-native-splash-screen # splash screen is an requirement of nearly all apps so lets add it here
+yarn link react-native-splash-screen
+
+# testing
+yarn add --dev mocha # now we have both, yarn and mocha
+yarn add --dev chai
+yarn add --dev chai-as-promised
+yarn add --dev chai-immutable
