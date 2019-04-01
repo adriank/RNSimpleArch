@@ -5,10 +5,12 @@ touch initialState.js
 touch rootReducer.js
 touch store.js
 
+mkdir __specs__
 mkdir actions
+mkdir assets
+mkdir assets/fonts
 mkdir components
 mkdir containers
+mkdir i18n
 mkdir lib
 mkdir reducers
-mkdir i18n
-mkdir __specs__
