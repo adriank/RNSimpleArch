@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import { StackNavigator } from 'react-navigation';
 
-import makeStore from './src/store'
+import makeStore from './store'
 
-import Main from './src/containers/Main'
+import Main from './containers/Main'
 
 const Navigation = StackNavigator({
 	Main: { screen: Main },

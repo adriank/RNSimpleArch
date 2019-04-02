@@ -1,4 +1,5 @@
 #!/bin/sh
+yarn add redux # no brainer
 yarn add react-redux # no brainer
 yarn add native-base # simplifies certain things, no alternative really
 yarn add react-navigation # no alternative
