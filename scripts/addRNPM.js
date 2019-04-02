@@ -1,4 +1,5 @@
 const packageJSON = require('../package.json');
+const fs = require("fs");
 
 if (!packageJSON.rnpm) {
   packageJSON['rnpm'] = {

@@ -15,3 +15,5 @@ yarn add --dev mocha # now we have both, yarn and mocha
 yarn add --dev chai
 yarn add --dev chai-as-promised
 yarn add --dev chai-immutable
+node scripts/addRNPM.js
+node scripts/addCommands.js
