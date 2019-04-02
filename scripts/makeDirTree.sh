@@ -1,19 +1,4 @@
 #!/bin/sh
-# mkdir src
-# cd src
-# touch initialState.js
-# touch rootReducer.js
-# touch store.js
-
-# mkdir __specs__
-# mkdir actions
-# mkdir assets
-# mkdir assets/fonts
-# mkdir components
-# mkdir containers
-# mkdir i18n
-# mkdir lib
-# mkdir reducers
 
 mkdir src
 mkdir src/__specs__
@@ -98,6 +83,7 @@ EOL
 
 mkdir src/lib
 mkdir src/lib/types
+mkdir src/i18n
 mkdir src/reducers
 mkdir src/actions
 
@@ -143,12 +129,12 @@ EOL
 
 mkdir tools
 
-cat >./src/reducer.js <<EOL
+cat >./src/rootReducer.js <<EOL
 import initial_state from "./initialState.js"
 import { fromJS } from 'immutable'
 
 const INITIAL_STATE = fromJS(initial_state)
-const reducer = function(state = INITIAL_STATE, action = {}) {
+const rootReducer = function(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
 		case 'EXAMPLE_TYPE':
 			return exampleAction(state, action.value)
@@ -156,7 +142,7 @@ const reducer = function(state = INITIAL_STATE, action = {}) {
   return state
 }
 
-export default reducer
+export default rootReducer
 EOL
 
 cat >./src/reducers/index.js <<EOL
