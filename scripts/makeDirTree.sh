@@ -1,5 +1,5 @@
 #!/bin/sh
-
+cd $1
 mkdir src
 mkdir src/__specs__
 mkdir src/components
@@ -181,14 +181,23 @@ export default (view) => connect(state => ({
 )(view);
 EOL
 
+moveAppJS() {
+  rm App.js
+  local search="import App from '\.\/App'"
+  local replace="import App from '\.\/src\/App'"
+  sed -i "" "s/${search}/${replace}/g" index.js
+}
+
+moveAppJS
+
 cat >./src/App.js <<EOL
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import { StackNavigator } from 'react-navigation';
 
-import makeStore from './src/store'
+import makeStore from './store'
 
-import Main from './src/containers/Main'
+import Main from './containers/Main'
 
 const Navigation = StackNavigator({
 	Main: { screen: Main },
@@ -215,4 +224,6 @@ export default class App extends Component {
 }
 EOL
 
-cp -r scripts/.vscode .
+cp -r ../scripts/.vscode .
+
+cd ..
