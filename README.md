@@ -2,7 +2,7 @@
 
 ## Why
 
-This architecture allows developers to create apps in no time. It has scripts to add views and functionalities to the code without writting too much code.
+This architecture allows developers to create apps in no time. It has scripts to add views and functionalities to the code without writting too much boilerplate.
 
 ## Instalation
 
