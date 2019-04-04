@@ -45,30 +45,42 @@ const styles = StyleSheet.create({
 }
 EOL
 
-cat >./src/components/Main.js <<EOL
+cat >./src/containers/Main.js <<EOL
 import React, { Component } from 'react'
 
 import {
 	StyleSheet,
-	View
 } from 'react-native'
+
+import {
+  Container,
+  Content,
+  Button,
+  Header,
+  Body,
+  Text,
+  Title
+} from 'native-base'
 
 import connectHelper from '../connectHelper'
 
-const Main = props => {
+const MainView = props => {
 	const { state, actions } = props
 	return (
 		<Container style={{ backgroundColor: "#09b24d" }}>
 			<Content>
+        <Text>Value: {state.get("value")}</Text>
+        <Button onPress={() => actions.increment()}><Text>Increment</Text></Button>
+        <Button onPress={() => actions.decrement()}><Text>Decrement</Text></Button>
 			</Content>
 		</Container>
 	)
 }
 
-Main.navigationOptions = ({ navigation }) => ({
+MainView.navigationOptions = ({ navigation }) => ({
 	header: <Header>
 						<Body>
-							<Title>MyApp</Title>
+							<Title>Main Screen</Title>
 						</Body>
 					</Header>
 })
@@ -79,6 +91,7 @@ const styles = StyleSheet.create({
 	myStyle: {
 	}
 })
+
 EOL
 
 mkdir src/lib
@@ -88,22 +101,33 @@ mkdir src/reducers
 mkdir src/actions
 
 cat >./src/actions/types.js <<EOL
-export const EXAMPLE_TYPE = 'EXAMPLE_TYPE'
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'
 EOL
 
 cat >./src/actions/actions.js <<EOL
 import * as types from './types';
 
-export function exampleAction(value) {
+export function increment(value = 1) {
   return {
-    type: types.EXAMPLE_TYPE,
-		value
+    type: types.INCREMENT,
+    value
   }
 }
+
+export function decrement(value = 1) {
+  return {
+    type: types.DECREMENT,
+    value
+  }
+}
+
 EOL
 
 cat >./src/initialState.js <<EOL
-export default {}
+export default {
+  "value": 0
+}
 EOL
 
 mkdir assets
@@ -133,34 +157,49 @@ cat >./src/rootReducer.js <<EOL
 import initial_state from "./initialState.js"
 import { fromJS } from 'immutable'
 
+import * as types from './actions/types';
+import {
+  increment,
+  decrement
+} from './reducers'
+
 const INITIAL_STATE = fromJS(initial_state)
 const rootReducer = function(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
-		case 'EXAMPLE_TYPE':
-			return exampleAction(state, action.value)
+		case types.INCREMENT:
+			return increment(state, action.value)
+		case types.DECREMENT:
+			return decrement(state, action.value)
 	}
   return state
 }
 
 export default rootReducer
+
 EOL
 
 cat >./src/reducers/index.js <<EOL
 import { fromJS, List, Map } from 'immutable';
 
-export function exampleAction(state, value) {
-	return state.set("value", value)
+export function increment(state, value) {
+	return state.update("value", old => old + value)
 }
+
+export function decrement(state, value) {
+  const newValue = state.get("value") - value
+  return newValue >= 0
+  ? state.set("value", newValue)
+  : state.set("value", 0)
+}
+
 EOL
 
 cat >./src/store.js <<EOL
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-
-// const reducer = combineReducers(rootReducer);
 
 export default function makeStore() {
   return createStoreWithMiddleware(rootReducer)
@@ -193,19 +232,22 @@ moveAppJS
 cat >./src/App.js <<EOL
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import makeStore from './store'
 
-import Main from './containers/Main'
+import MainView from './containers/Main'
 
-const Navigation = StackNavigator({
-	Main: { screen: Main },
+const Routes = createStackNavigator({
+	Main: { screen: MainView },
+},{
+  initialRouteName: "Main"
 })
+const Navigation = createAppContainer(Routes);
+
 
 const store = makeStore()
 
-// !!! CHANGE THE CLASS NAME TO MATCH STRING IN index.js (registerComponent) !!!
 export default class App extends Component {
   constructor() {
     super()
