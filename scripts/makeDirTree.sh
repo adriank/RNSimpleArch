@@ -151,7 +151,7 @@ chai.use(chaiAsPromised);
 global.expect = chai.expect;
 EOL
 
-mkdir tools
+mkdir scripts
 
 cat >./src/rootReducer.js <<EOL
 import initial_state from "./initialState.js"
@@ -267,5 +267,6 @@ export default class App extends Component {
 EOL
 
 cp -r ../scripts/.vscode .
+cp ../scripts/createReducer.sh ./scripts/
 
 cd ..
