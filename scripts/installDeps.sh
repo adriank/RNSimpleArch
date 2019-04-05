@@ -16,10 +16,11 @@ yarn add react-native-splash-screen # splash screen is an requirement of nearly 
 react-native link react-native-splash-screen
 
 # testing
-yarn add --dev mocha # now we have both, yarn and mocha
+yarn add --dev mocha # now we have both, jest and mocha
 yarn add --dev chai
 yarn add --dev chai-as-promised
 yarn add --dev chai-immutable
+yarn add --dev redux-immutable-state-invariant # test for mutations in Redux store
 
 node ../scripts/addRNPM.js
 node ../scripts/addCommands.js
