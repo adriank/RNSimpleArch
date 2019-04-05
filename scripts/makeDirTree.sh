@@ -195,14 +195,27 @@ export function decrement(state, value) {
 EOL
 
 cat >./src/store.js <<EOL
-import { createStore, applyMiddleware } from 'redux';
+import {
+  createStore,
+  applyMiddleware,
+  // combineReducers
+} from 'redux';
 import thunk from 'redux-thunk';
+
 import rootReducer from './rootReducer';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const middleware = process.env.NODE_ENV === 'development' ?
+  [require('redux-immutable-state-invariant').default(), thunk] :
+  [thunk];
+
+// combineReducers is not compatible with Immutable.JS. If you'd like to use combineReducers with Immutable.JS, install redux-immutable. If you don't use Immutable.JS, uncomment line 4 of this file and implement your reducers here.
+// const reducer = combineReducers(rootReducer);
 
 export default function makeStore() {
-  return createStoreWithMiddleware(rootReducer)
+  return createStore(
+    rootReducer,
+    applyMiddleware(...middleware)
+  );
 }
 EOL
 
