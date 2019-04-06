@@ -30,7 +30,7 @@ RNSA follows Redux.js architecture as closely as possible. It delivers tools and
 
 ### Windows and Linux support
 
-Mac is required for building iOS apps so the most common mobile app development platform is OSX. I personally don't have other platforms at hand, but if you'd like to add support for your preffered one, PR's are most welcomed.
+Mac is required for building iOS apps so the most common mobile app development platform is OSX. I personally don't have other platforms at hand, but if you'd like to add support for your preffered one, PRs are most welcomed.
 
 ### Typescript
 
@@ -42,14 +42,14 @@ If you are budgeting a development effort, consider the following:
 
 - Adding types, resolving problems with missing or outdated types of libraries etc generally adds around 1/3 more work to the project.
 - Typescript is another thousands of lines of code that you add to your project. It needs to maintained.
-- While Typescript grows in popularity, most of Javascript developers either don't know the language at all or don't understand how to use types to their advantage. Analytics shows that more than 50% of all Typescript code on Github use *Any* type, which is equivalent to not using Typescript at all.
+- While Typescript grows in popularity, most Javascript developers either don't know the language at all or don't understand how to use types to their advantage. Analytics shows that more than 50% of all Typescript code on Github uses *Any* type, which is equivalent to not using Typescript at all.
 
 How to decide:
 
 - If your app functionality is already known and it's in maintanance mode rather than fast iteration mode, you should *consider adding Typescript* to the project.
 - If you start a completely new app and your developers are from typed language background, *consider using Typescript*
-- If you rewrite already built app (in any other technology) and you know that the looks and functionality is not going to change, *consider using Typescript*
-- If you start a project form vague idea and you know that specification will change, *don't use Typescript* - it will add too much work.
+- If you rewrite an already built app (in any other technology) and you know that the looks and functionality are not going to change, *consider using Typescript*
+- If you start a project form a vague idea and you know that specification will change, *don't use Typescript* - it will add too much work.
 - If your developers are from web background and/or don't have formal education on typed languages, *don't use Typescript*. It can end up in an unmaintanable code base.
 
 To add Typescript on your own:
@@ -70,7 +70,7 @@ where *lowercasename* is the name of the project (this is what package.json *nam
 
 ## Usage
 
-There are following scripts to make your life easier:
+RNSA provides you with the following scripts:
 
 ### createReducer
 
