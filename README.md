@@ -106,6 +106,6 @@ Files to work with:
 
 - ./actions/actions.js - as of now you need to manually adopt actions to your use case. This file (and containing folder) is also the place to put side effect handling functions.
 - ./rootReducer.js - as of now you need to manually add cases to the rootReducer.
-- ./components - the folder with **all** dummy (state unaware) components.
+- ./components - the folder with **all** dumb (state unaware) components.
 - ./containers - the folder with **all** smart (state aware) components.
 - ./reducers - the folder with **all** reducers
