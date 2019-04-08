@@ -1,5 +1,3 @@
 export default {
-  "store": {
-    "value": 0,
-  }
+  "value": 0,
 }

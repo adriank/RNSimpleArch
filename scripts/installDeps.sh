@@ -8,9 +8,8 @@ fi
 cd $1
 yarn add redux # no brainer
 yarn add react-redux # no brainer
-yarn add redux-persist # redux store persistence
-yarn add redux-persist-transform-immutable
 yarn add native-base # simplifies certain things, no alternative really
+react-native link # needed by NativeBase
 yarn add react-navigation # no alternative
 yarn add react-native-gesture-handler # required by react-navigation
 react-native link react-native-gesture-handler

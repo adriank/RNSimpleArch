@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 
 export default (view) => connect(state => ({
-		state: state.store
+		state: state
 	}),
 	(dispatch) => ({
 		actions: bindActionCreators(actions, dispatch)

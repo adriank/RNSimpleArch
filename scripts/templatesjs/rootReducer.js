@@ -7,7 +7,7 @@ import {
   decrement
 } from './reducers'
 
-const INITIAL_STATE = fromJS(initial_state.store)
+const INITIAL_STATE = fromJS(initial_state)
 const rootReducer = function(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
 		case types.INCREMENT:
