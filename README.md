@@ -25,7 +25,7 @@ RNSA follows Redux.js architecture as closely as possible. It delivers tools and
 - NativeBase - In terms of development speed, NativeBase has no competition
 - React Native Splash Screen - Splash screen handling is installed by default
 
-## Not included by in React Native Simple Architecture
+## Not included in React Native Simple Architecture
 
 ### Windows and Linux support
 
