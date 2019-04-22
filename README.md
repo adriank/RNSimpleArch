@@ -61,7 +61,7 @@ Refer to my blog post (TBA) on state persistence.
 
 ## Instalation
 
-git clone
+`git clone git@github.com:adriank/RNSimpleArch.git`
 
 ## Create newproject
 
