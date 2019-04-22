@@ -26,6 +26,7 @@ if ! [ -d $1 ]; then
   react-native init $1
   sh scripts/installDeps.sh $1
   sh scripts/makeDirTree.sh $1
+  mv $1 ..
 else
   echo '(NOT IMPLEMENTED YET) Found project, updating.'
   # NOT IMPLEMENTED YET
