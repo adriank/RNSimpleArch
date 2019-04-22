@@ -1,0 +1,46 @@
+{
+  "name": "jiapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "mocha-watch": "mocha --require test/setup-tests.js --recursive src/**/__specs__/*.spec.js --watch",
+    "mocha": "mocha --require test/setup-tests.js --recursive src/**/__specs__/*.spec.js",
+    "createReducer": "sh ./scripts/createReducer.sh"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12",
+    "native-base": "^2.12.1",
+    "react": "16.8.3",
+    "react-native": "0.59.5",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-native-iphone-x-helper": "^1.2.0",
+    "react-native-splash-screen": "^3.2.0",
+    "react-navigation": "^3.8.1",
+    "react-redux": "^7.0.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/runtime": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-immutable": "^2.1.0",
+    "jest": "^24.7.1",
+    "metro-react-native-babel-preset": "^0.53.1",
+    "mocha": "^6.1.4",
+    "react-test-renderer": "16.8.3",
+    "redux-immutable-state-invariant": "^2.1.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
+}
